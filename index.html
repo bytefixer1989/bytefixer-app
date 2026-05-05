@@ -52,7 +52,7 @@
     <div class="vignette"></div>
     <div class="noise"></div>
     <div class="hero-content">
-      <div class="logo-icon">
+      <div class="logo-icon" id="heroLogo">
         <div class="logo-glow"></div>
         <svg width="72" height="72" viewBox="0 0 100 100" fill="none">
           <circle cx="50" cy="50" r="42" stroke="#3b8beb" stroke-width="1.2" fill="none" opacity="0.2"/>
@@ -72,8 +72,10 @@
           <line x1="76" y1="76" x2="57" y2="57" stroke="#3b8beb" stroke-width="1" opacity="0.35"/>
         </svg>
       </div>
-      <h1 class="title"><span class="white">BYTE</span><span class="blue">FIXER</span></h1>
-      <p class="subtitle">Technical Support</p>
+      <h1 class="title" id="heroTitle">
+        <span class="letter white" data-i="0">B</span><span class="letter white" data-i="1">Y</span><span class="letter white" data-i="2">T</span><span class="letter white" data-i="3">E</span><span class="letter blue" data-i="4">F</span><span class="letter blue" data-i="5">I</span><span class="letter blue" data-i="6">X</span><span class="letter blue" data-i="7">E</span><span class="letter blue" data-i="8">R</span>
+      </h1>
+      <p class="subtitle" id="heroSubtitle">Technical Support</p>
     </div>
     <div class="scroll-indicator" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
       <div class="mouse"></div>

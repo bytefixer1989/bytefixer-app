@@ -62,6 +62,42 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
+// ===== HERO INTRO SEQUENCE =====
+(function() {
+  const logo = document.getElementById('heroLogo');
+  const title = document.getElementById('heroTitle');
+  const subtitle = document.getElementById('heroSubtitle');
+  if (!logo || !title) return;
+
+  const letters = title.querySelectorAll('.letter');
+  const LOGO_DELAY = 500;       // ms before logo starts
+  const BURST_DURATION = 400;   // ms the logo over-exposes
+  const LETTER_START = 1800;    // ms after page load to start letters
+  const LETTER_GAP = 160;       // ms between each letter
+  const FLASH_DURATION = 250;   // ms each letter stays over-bright
+  const SUBTITLE_DELAY = 700;   // ms after last letter
+
+  // Step 1: Light up logo with a burst flash
+  setTimeout(() => {
+    logo.classList.add('lit', 'burst');
+    // Remove the burst overexposure after a beat
+    setTimeout(() => logo.classList.remove('burst'), BURST_DURATION);
+  }, LOGO_DELAY);
+
+  // Step 2: Light up each letter one by one
+  letters.forEach((letter, i) => {
+    setTimeout(() => {
+      letter.classList.add('lit', 'flash');
+      // Remove the flash overexposure
+      setTimeout(() => letter.classList.remove('flash'), FLASH_DURATION);
+    }, LETTER_START + i * LETTER_GAP);
+  });
+
+  // Step 3: Fade in subtitle after all letters
+  const subtitleTime = LETTER_START + letters.length * LETTER_GAP + SUBTITLE_DELAY;
+  setTimeout(() => subtitle.classList.add('lit'), subtitleTime);
+})();
+
 // ===== 3D WARP SPEED LINES =====
 (function() {
   const c = document.getElementById('warpCanvas');
